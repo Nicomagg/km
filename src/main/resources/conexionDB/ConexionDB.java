@@ -289,4 +289,202 @@ public class ConexionDB {
 		r = pst.executeQuery();
 	 	return r;
 	}
+	
+	//add new produce
+	public void newProduce(int codigo, String nombre, String descripcion, int imgProducto) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO productos (codigo, nombre, descripcion, imgproducto)"
+				+ "VALUES (?, ?, ?, ?)");
+		pst.setInt(1, codigo);
+		pst.setString(2, nombre);
+		pst.setString(3, descripcion);
+		pst.setInt(4, imgProducto);
+		st = pst.executeUpdate();
+	}
+	
+	//delete produce
+	public void deleteProduce(int codigo) throws SQLException{
+		pst = conn.prepareStatement("DELETE FROM productos"
+				+ "WHERE codigo = ?");
+		pst.setInt(1, codigo);
+		st = pst.executeUpdate();
+	}
+	
+	//search a produce for id
+	public ResulSet searchProduceForId(int codigo) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"productos\""
+	 	+ "WHERE codigo = ?");
+		pst.setInt(1, usuarioComun);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a produce for name
+	public ResulSet searchProduceForName(String nombre) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"productos\""
+	 	+ "WHERE nombre = ?");
+		pst.setString(1, nombre);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//add new order for produce
+	public void newOrdForProd(int pedido, int producto) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO prodxped (pedido, producto)"
+				+ "VALUES (?, ?)");
+		pst.setInt(1, pedido);
+		pst.setInt(2, producto);
+		st = pst.executeUpdate();
+	}
+	
+	//delete order for produce
+	public void deleteOrdForProd(int id) throws SQLException{
+		pst = conn.prepareStatement("DELETE FROM prodxped"
+				+ "WHERE idproxped = ?");
+		pst.setInt(1, id);
+		st = pst.executeUpdate();
+	}
+	
+	//search a order for produce for id
+	public ResulSet searchOrdForProdForId(int id) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"prodxped\""
+	 	+ "WHERE idproxped = ?");
+		pst.setInt(1, id);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a order for produce for order
+	public ResulSet searchOrdForProdForOrder(int pedido) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"prodxped\""
+	 	+ "WHERE pedido = ?");
+		pst.setInt(1, pedido);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a order for produce for produce
+	public ResulSet searchOrdForProdForProduce(int producto) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"prodxped\""
+	 	+ "WHERE producto = ?");
+		pst.setInt(1, producto);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//add new user
+	public void newUser(String email, String contrasena, String nombre, String apellido) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO usuario (email, contrasena, nombre, apellido)"
+				+ "VALUES (?, ?, ?, ?)");
+		pst.setString(1, email);
+		pst.setString(2, contrasena);
+		pst.setString(3, nombre);
+		pst.setString(4, apellido);
+		st = pst.executeUpdate();
+	}
+	
+	//delete user
+	public void deleteUser(String email) throws SQLException{
+		pst = conn.prepareStatement("DELETE FROM usuario"
+				+ "WHERE email = ?");
+		pst.setString(1, email);
+		st = pst.executeUpdate();
+	}
+	
+	//search a user for email
+	public ResulSet searchUserForEmail(String email) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuario\""
+	 	+ "WHERE email = ?");
+		pst.setString(1, email);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a user for name
+	public ResulSet searchUserForName(String nombre) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuario\""
+	 	+ "WHERE nombre = ?");
+		pst.setString(1, nombre);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a user for surname
+	public ResulSet searchUserForSurname(String apellido) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuario\""
+	 	+ "WHERE apellido = ?");
+		pst.setString(1, apellido);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//add new common user
+	public void newCommonUser(String email, String contrasena, String nombre, String apellido, String direccion, int telefono, int fotoPerfil) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO usuariocomun (email, contrasena, nombre, apellido, direccion, telefono, fotoPerfil)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?)");
+		pst.setString(1, email);
+		pst.setString(2, contrasena);
+		pst.setString(3, nombre);
+		pst.setString(4, apellido);
+		pst.setString(5, direccion);
+		pst.setInt(6, telefono);
+		pst.setInt(7, fotPerfil);
+		st = pst.executeUpdate();
+	}
+	
+	//delete common user
+	public void deleteCommonUser(int id) throws SQLException{
+		pst = conn.prepareStatement("DELETE FROM usuariocomun"
+				+ "WHERE iduc = ?");
+		pst.setString(1, id);
+		st = pst.executeUpdate();
+	}
+	
+	//search a common user for email
+	public ResulSet searchCommonUserForEmail(String email) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuariocomun\""
+	 	+ "WHERE email = ?");
+		pst.setString(1, email);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a common user for name
+	public ResulSet searchCommonUserForName(String nombre) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuariocomun\""
+	 	+ "WHERE nombre = ?");
+		pst.setString(1, nombre);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//search a common user for surname
+	public ResulSet searchCommonUserForSurname(String apellido) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"usuariocomun\""
+	 	+ "WHERE apellido = ?");
+		pst.setString(1, apellido);
+		r = pst.executeQuery();
+	 	return r;
+	}
 }
