@@ -1,0 +1,13 @@
+body{
+	background-image: url("../img/fondo.png");
+	font-family: Arial;
+	font-size: 16px;	
+}
+
+header{
+	background-color: rgba(30, 116, 126, 0.9);
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
