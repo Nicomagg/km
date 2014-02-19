@@ -1,7 +1,6 @@
 $(document).on("ready", inicio);
 
 function inicio () {
-	analisisPosicionMenu();
 	$("#login").on("click",aparecerLogin);
 }
 
@@ -11,15 +10,4 @@ function aparecerLogin(){
   	} else {
     	$("#ingreso").css("display","none");
   	}
-}
-
-function analisisPosicionMenu() {
-	var url = $(location).attr('pathname');
-	console.log(url);
-	switch(url){
-		case "/km/":
-			$("nav ul li").removeClass();
-			$("#navInicio").addClass('active');
-			break;
-	}
 }

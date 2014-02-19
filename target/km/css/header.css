@@ -1,5 +1,226 @@
+@font-face {
+   font-family: kiosko;
+   src: url(../fonts/kiosko.ttf) format('truetype');
+ }
+
 hgroup{
-	background:url(../img/iconoKM.png) no-repeat 20% center;
-	height: 100px;
-	width: 70%;
+	background:url(../img/iconoKM.png) no-repeat 15% 15;
+	height: 120px;
+	width: 100%;
+}
+
+hgroup h1{
+	color: #eee;
+	font-family: kiosko;
+	font-size: 3em;
+	margin: 0em;
+	padding: 0em;
+	padding-left: 1.4em;
+	text-align: center;
+	text-shadow:0.1em 0.1em 0.2em #bbb ;
+}
+
+hgroup h2{
+	color: #eee;
+	font-family: kiosko;
+	font-size: 1.5em;
+	margin: 0em;
+	margin-right: 8%;
+	padding: 0em;
+	text-align: center;
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+}
+input:-moz-placeholder {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+}
+
+nav{
+	background-color: rgba(255,255,255,0.3);
+	color: rgba(0,0,0,0.8);
+	width: 100%;
+}
+
+nav ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-left: 0.5%;
+}
+
+nav ul li{
+	display: inline-block;
+	height: 47px;
+	text-align: center;
+}
+
+nav ul li a{
+	color: rgba(0,0,0,0.8);
+	display: inline-block;
+	font-size: 1.1em;
+	height:100%; 
+	margin:0;
+	padding: 0.7em 0em 0em 0em;
+	text-decoration: none;
+	text-align: center;
+	width: 100px;
+}
+
+nav ul li:hover{
+	background-color: #424242;
+}
+
+nav ul li:hover,nav ul li a:hover{
+	color: #ddd;
+}
+
+nav ul, nav div{
+	display: inline-block;
+	vertical-align: top;
+}
+
+nav div{
+	float: right;
+	width: 11.8em;
+}
+
+nav div form{
+	float: right;
+}
+
+nav div form label{
+	font-size: 0.8em;
+}
+
+nav div form div{
+	border: 3 solid rgba(92, 117, 169, 0.9);
+	border-radius: 0.3em;
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+nav div form input, nav div form figure{
+	display: inline-block;
+	vertical-align: top;
+}
+
+nav div form figure{
+	margin: 0;
+	padding: 0;
+	width: 1.6em;
+}
+
+nav div form figure img{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#buscador{
+	background: rgba(255,255,255,0);
+	border: 0;
+	color: rgba(0,0,0,0.8);
+	height: 1.6em;
+	font-size: 0.9em;
+	width: 83%;
+}
+
+#buttonIngre{
+	margin-left: 1em;
+	font-family: Arial;
+	font-size: 0.8em;
+	padding: 0.3em;
+	width: 70px;
+}
+
+#contrasenaIngre div a{
+	color: rgba(0,0,0,0.8);
+	font-size: 0.8em;
+	text-decoration: none;
+}
+
+#contrasenaIngre div a:hover{
+	color: #eee;
+}
+
+#ingreso{
+	background-color: rgba(255,255,255,0.3);
+	color: rgba(0,0,0,0.8);
+	display: none;
+	height: 120px;
+	text-align: center;
+}
+
+#ingreso form{
+	padding-top: 3.2em;
+	text-align: center;
+}
+
+#ingreso label{
+	padding-left: 3%;
+}
+
+#labelIngreisUsu, #inputTextIngre, #contrasenaIngre, #buttonIngre{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#login{
+	background-color: rgba(255,255,255,0.3);
+	border: solid 2 rgba(0,0,0,0.7);
+	border-radius: 0.5em;
+	color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	float: right;
+	font-size: 0.9em;
+	margin: 0.2em 0.3em 0em 0em;
+	padding: 0.3em;
+}
+
+#login:hover{
+	border: solid 2 #ddd;
+	color: #ddd;
+}
+
+#registrarse{
+	background-color: rgba(255,255,255,0.3);
+	border: solid 2 rgba(0,0,0,0.7);
+	border-radius: 0.5em;
+	color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	float: right;
+	font-size: 0.9em;
+	margin: 0.2em 0.3em 0em 0em;
+	padding: 0.3em;	
+}
+
+#registrarse:hover{
+	border: solid 2 #ddd;
+	color: #ddd;
+}
+
+.active{
+	background-color: #424242;
+}
+
+.active a{
+	color: #ddd;
+}
+
+.inputTextIngre{
+	font-size: 0.9em;
+	height: 25px;
+}
+
+.radioBusc{
+	display: inline-block;
+	font-size: 0.8em;
+	margin-top: 0.2em;
+	margin-left: 0.3em;
 }
