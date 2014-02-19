@@ -4,7 +4,7 @@
  }
 
 hgroup{
-	background:url(../img/iconoKM.png) no-repeat 20% 15;
+	background:url(../img/iconoKM.png) no-repeat 15% 15;
 	height: 120px;
 	width: 100%;
 }
@@ -15,6 +15,7 @@ hgroup h1{
 	font-size: 3em;
 	margin: 0em;
 	padding: 0em;
+	padding-left: 1.4em;
 	text-align: center;
 	text-shadow:0.1em 0.1em 0.2em #bbb ;
 }
@@ -130,7 +131,7 @@ nav div form figure img{
 	width: 83%;
 }
 
-#buttonReg{
+#buttonIngre{
 	margin-left: 1em;
 	font-family: Arial;
 	font-size: 0.8em;
@@ -138,13 +139,13 @@ nav div form figure img{
 	width: 70px;
 }
 
-#contrasenaReg div a{
+#contrasenaIngre div a{
 	color: rgba(0,0,0,0.8);
 	font-size: 0.8em;
 	text-decoration: none;
 }
 
-#contrasenaReg div a:hover{
+#contrasenaIngre div a:hover{
 	color: #eee;
 }
 
@@ -152,20 +153,20 @@ nav div form figure img{
 	background-color: rgba(255,255,255,0.3);
 	color: rgba(0,0,0,0.8);
 	display: none;
-	height: 100px;
+	height: 120px;
 	text-align: center;
 }
 
 #ingreso form{
-	padding-top: 2em;
+	padding-top: 3.2em;
 	text-align: center;
 }
 
 #ingreso label{
-	padding-left: 1em;
+	padding-left: 3%;
 }
 
-#labelRegisUsu, #inputTextReg, #contrasenaReg, #buttonReg{
+#labelIngreisUsu, #inputTextIngre, #contrasenaIngre, #buttonIngre{
 	display: inline-block;
 	vertical-align: top;
 }
@@ -187,6 +188,23 @@ nav div form figure img{
 	color: #ddd;
 }
 
+#registrarse{
+	background-color: rgba(255,255,255,0.3);
+	border: solid 2 rgba(0,0,0,0.7);
+	border-radius: 0.5em;
+	color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	float: right;
+	font-size: 0.9em;
+	margin: 0.2em 0.3em 0em 0em;
+	padding: 0.3em;	
+}
+
+#registrarse:hover{
+	border: solid 2 #ddd;
+	color: #ddd;
+}
+
 .active{
 	background-color: #424242;
 }
@@ -195,7 +213,7 @@ nav div form figure img{
 	color: #ddd;
 }
 
-.inputTextReg{
+.inputTextIngre{
 	font-size: 0.9em;
 	height: 25px;
 }

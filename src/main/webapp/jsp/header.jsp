@@ -3,18 +3,21 @@
 <div id="login">
 	Ingresar
 </div>
+<div id="registrarse">
+	Registrarse
+</div>
 <div id="ingreso">
 	<form action="" method="get">
-		<label id="labelRegisUsu">Usuario:</label>
-		<input id="inputTextReg" class="inputTextReg" type="text" placeholder="ejemplo@ejemplo.com" name="usuario">
-		<label id="labelRegisCon">Contraseña:</label>
-		<div id="contrasenaReg">
-			<input class="inputTextReg" type="password" name="contrasena">
+		<label id="labelIngreUsu">Usuario:</label>
+		<input id="inputTextIngre" class="inputTextIngre" type="text" placeholder="ejemplo@ejemplo.com" name="usuario">
+		<label id="labelIngreCon">Contraseña:</label>
+		<div id="contrasenaIngre">
+			<input class="inputTextIngre" type="password" name="contrasena">
 			<div>
 				<a href="#">Olvidaste tu contraseña??</a>
 			</div>
 		</div>
-		<input id="buttonReg" type="submit" value="Entrar">
+		<input id="buttonIngre" type="submit" value="Entrar">
 	</form>
 </div>
 

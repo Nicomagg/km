@@ -5,9 +5,9 @@ function inicio () {
 }
 
 function aparecerLogin(){
-	if ( $( "#ingreso" ).is("hidden") ) {
-    	$("#ingreso").slideUp("slow");
+	if ( $( "#ingreso" ).is(":hidden") ) {
+    	$("#ingreso").show(250);
   	} else {
-    	$("#ingreso").slideDown("slow");
+    	$("#ingreso").css("display","none");
   	}
 }
