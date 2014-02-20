@@ -15,7 +15,6 @@ function aparecerLogin(){
 
 function analisisPosicionMenu() {
 	var url = $(location).attr('pathname');
-	console.log(url);
 	switch(url){
 		case "/km/":
 			$("nav ul li").removeClass();

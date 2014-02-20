@@ -224,3 +224,154 @@ nav div form figure img{
 	margin-top: 0.2em;
 	margin-left: 0.3em;
 }
+
+@media screen and (max-width: 640px){
+	hgroup{
+		background:url(../img/iconoKM.png) no-repeat 0 15;
+	}
+
+	nav{
+		display: block;
+		height: 236px;
+	}
+
+	nav ul{
+		width: 99%;
+	}
+
+	nav ul li{
+		width: 100%;
+	}
+
+	nav ul li a{
+		width: 100%;
+	}
+
+	nav div{
+		background: rgba(0,0,0,0.1);
+		float: left;
+		width: 100%;
+	}
+
+	nav div form{
+		display: block;
+		float: left;
+		margin: 0;
+		margin-left: 1%;
+		padding: 0;
+		width: 200px;
+	}
+
+	nav div form div{
+		float: left;
+	}
+
+	#contrasenaIngre{
+		margin: 0;
+		margin-bottom: 1%;
+		padding: 0;
+		width: 61%;
+	}
+
+	#contrasenaIngre div{
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	#contrasenaIngre input{
+		margin: 0;
+		padding: 0;
+		width: 97.5%;
+	}
+
+	#buttonIngre{
+		margin-top: 0.5em;
+		width: 150px;
+	}
+
+	#labelIngreUsu{
+		margin: 0;
+		padding: 0;
+		padding-top: 5px;
+		text-align: right;
+		width: 20%;
+	}
+
+	#labelIngreUsu,#inputTextIngre{
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	#labelIngreCon{
+		margin: 0;
+		padding:0;
+		padding-top: 5px;
+		text-align: right;
+		width: 21%;
+	}
+
+	#labelIngreCon,#contrasenaIngre{
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	#ingreso{
+		height: 175px;
+		margin: 0;
+		padding: 0;
+	}
+
+	#inputTextIngre{
+		margin: 0;
+		margin-bottom: 0.5em;
+		padding: 0;
+		width: 60%;
+	}
+}
+
+@media screen and (max-width: 610px){
+	hgroup{
+		height: 160px;
+	}
+
+	hgroup h1{
+		padding-top: 0.7em;
+	}
+}
+
+@media screen and (max-width: 448px){
+	hgroup{
+		height: 205px;
+	}
+
+	hgroup h1{
+		margin: 0;
+		padding: 0;
+		padding-top: 0.7em;
+	}
+}
+
+@media screen and (max-width: 410px){
+	#contrasenaIngre{
+		width: 45%;
+	}
+
+	#labelIngreUsu{
+		text-align: left;
+		width: 60px;
+	}
+
+	#labelIngreCon{
+		text-align: left;
+		width: 83px;
+	}
+
+	#ingreso{
+		height: 185px;
+	}
+
+	#inputTextIngre{
+		width: 60%;
+	}
+}

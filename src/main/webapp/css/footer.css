@@ -22,7 +22,7 @@
 #footerDivi1 figure{
 	box-shadow: 0px 0px 20px rgba(255,255,255,0.4);
 	display: inline-block;
-	margin: 0% 0% 0% 6%; 
+	margin: 0% 0% 0% 7%; 
 	vertical-align: top;
 	width: 50px;
 }
@@ -70,4 +70,82 @@
 
 #primImgFooter{
 	padding: 3% 0% 0% 35%; 
+}
+
+@media screen and (max-width: 650px){
+	#footerDivi1{
+		height: 55%;
+		margin: 0;
+		padding: 0% 0%;
+		width: 99%;
+	}
+
+	#footerDivi1 figure{
+		padding: 0;
+		margin: 0% 0% 0% 12%;
+	}
+
+	#footerDivi2{
+		border-top: 1 solid rgba(255,255,255,0.1);
+		height: 25%;
+		text-align: center;
+		width: 99%;
+	}
+
+	#footerDivi2 h2{
+		padding-top: 0em;
+	}
+
+	#primImgFooter{
+		padding: 1% 0% 0% 0%; 
+	}
+
+}
+
+@media screen and (max-width: 450px){
+	#footerDivi1{
+		height: 55%;
+		margin: 0;
+		padding: 0% 0%;
+		width: 99%;
+	}
+
+	#footerDivi1 figure{
+		margin-left:5%;
+		width: 18%;
+	}
+
+	#footerDivi2{
+		border-top: 1 solid rgba(255,255,255,0.1);
+		height: 25%;
+		text-align: center;
+		width: 99%;
+	}
+
+	#footerDivi2 h2{
+		padding-top: 0em;
+	}
+}
+
+@media screen and (max-width: 450px){
+	#footerDivi1{
+		height: 45%;
+	}
+
+	#footerDivi1 h2{
+		padding-left: 0em;
+		padding-top: 0.8em;
+	}
+
+	#footerDivi1 figure{
+		margin-left:2%;
+	}
+
+	#footerDivi2{
+		height: 28%;
+	}
+
+	#footerDivi3{
+		height: 27%;
+	}
 }

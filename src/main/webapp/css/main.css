@@ -1,3 +1,12 @@
+@font-face {
+   font-family: kiosko;
+   src: url(../fonts/kiosko.ttf) format('truetype');
+ }
+
+html,body{
+	height: 100%;
+}
+
 body{
 	background: url("../img/fondo.png");
 	font-family: Arial;
@@ -7,6 +16,7 @@ body{
 header{
 	background-color: rgba(92, 117, 169, 0.9);
 	box-shadow: 0px 15px 25px #5C75A9;
+	height: auto;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
@@ -15,13 +25,44 @@ header{
 footer{
 	background-color: #424242;
 	box-shadow: 0px -15px 25px #424242;
+	clear: both;
 	height: 200px;
 	margin: 0;
 	padding: 0;
+	vertical-align: bottom;
 	width: 100%;
 }
 
 section{
-	height: 100px;
-	padding: 1.5em 0em;
+	padding: 1.5em 0.5em;
+}
+
+section h2{
+	border-radius: 5px;
+	box-shadow: 0em 0em 1em rgba(255,255,255,0.5);
+	color:#ccc;
+	font-family: kiosko;
+	margin-top: 1em;
+	padding-left: 4px;
+}
+
+section p{
+	color: #ccc;
+	padding: 0% 5%;
+	text-align: justify;
+	text-indent: 2em;
+}
+
+section ul{
+	color: #ccc;
+	list-style-type: square;
+	margin: 0;
+	padding: 0% 5% 0% 15%;
+	text-align: justify;
+}
+
+@media screen and (max-width: 650px){
+	footer{
+		height: 230px;
+	}	
 }
