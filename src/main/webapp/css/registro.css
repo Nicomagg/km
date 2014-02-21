@@ -5,6 +5,10 @@
    src: url(../fonts/kiosko.ttf) format('truetype');
 }
 
+#regUsuario{
+	display: none;
+}
+
 #regUsuario form{
 	margin-left: 15%;
 	margin-top: 2em;

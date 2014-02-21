@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page session = "false" %>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,8 +23,8 @@
 		<div id="selecTipoReg">
 			<h2>Seleccione el tipo de registro:</h2>
 			<div>
-				<button>Como Kiosko</button>
-				<button>Como Usuario</button>
+				<button id="formularioRegKiosko">Como Kiosko</button>
+				<button id="formularioRegUsuario">Como Usuario</button>
 			</div>
 		</div>
 		<div id="regUsuario">
@@ -37,44 +38,44 @@
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regApUs">
 						<label>Apellido:</label>
-						<input id="regApUs" type="text" name="regApUs">
+						<input type="text" name="regApUs">
 						<div>
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regEmaUs">
 						<label>E-mail:</label>
-						<input id="regEmaUs" type="email" name="regEmaUs">
+						<input type="email" name="regEmaUs">
 						<div>
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regContUs">
 						<label>Contraseña:</label>
-						<input id="regContUs" type="password" name="regContUs">
+						<input type="password" name="regContUs">
 						<div>
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regDirUs">
 						<label>Dirección:</label>
-						<input id="regDirUs" type="text" name="regDirUs">
+						<input type="text" name="regDirUs">
 						<div>
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regTelUs">
 						<label>Teléfono:</label>
-						<input id="regTelUs" type="text" name="regTelUs">
+						<input type="text" name="regTelUs">
 						<div>
 							<span></span>
 						</div>
 					</div>
-					<div>
+					<div id="regFotoPerfilUs">
 						<label>Foto Perfil:</label>
-						<input id="regFotoPerfilUs" type="file" name="regFotoPerfilUs">
+						<input type="file" name="regFotoPerfilUs">
 						<div>
 							<span></span>
 						</div>
