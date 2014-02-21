@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>KiskoMandado</title>
+	<title>KioskoMandado - Inicio</title>
 	<link rel="icon" type="image/png" href="img/icono.png" />
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
