@@ -11,10 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<style type="text/css">
-		header{
+		section{
 			text-align: center;
 		}
-		header p{
+		section p{
 			margin: 0;
 			padding: 10%;
 		}

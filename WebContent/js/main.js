@@ -24,8 +24,6 @@ function analisisPosicionMenu() {
 		case "/km/":
 			$("#navInicio").addClass('active');
 			break;
-		case "/km/registro.jsp":
-			break;
 	}
 }
 

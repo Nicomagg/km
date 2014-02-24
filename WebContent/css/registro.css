@@ -6,6 +6,7 @@
 }
 
 #regUsuario{
+	display: none;
 }
 
 #regUsuario form{
