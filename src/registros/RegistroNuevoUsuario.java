@@ -1,11 +1,9 @@
 package registros;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
+import java.io.Serializable;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +21,7 @@ import conexionDB.ConexionDB;
 /**
  * Servlet implementation class RegistroNuevoUsuario
  */
-public class RegistroNuevoUsuario extends HttpServlet{
+public class RegistroNuevoUsuario extends HttpServlet implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String dirUploadFiles;
        
@@ -62,7 +60,7 @@ public class RegistroNuevoUsuario extends HttpServlet{
 	}
 	
 	private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		ConexionDB db = (ConexionDB) getServletContext().getAttribute("baseDeDatos");
+		ConexionDB db = (ConexionDB) getServletContext().getAttribute("BaseDeDatos");
 		
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
@@ -74,6 +72,7 @@ public class RegistroNuevoUsuario extends HttpServlet{
 		
 		ArrayList<String> parametros = new ArrayList<String>();
 		String nombreFoto = "";
+		
 		// Se recorren todos los items, que son de tipo FileItem
 		for (Object item : items) {
 			FileItem uploaded = (FileItem) item;
@@ -94,30 +93,16 @@ public class RegistroNuevoUsuario extends HttpServlet{
 				parametros.add(uploaded.getString());
 			}
 		}
-
-		String nombre = parametros.get(1);
-		String apellido = parametros.get(3);
-		String email = parametros.get(5);
-		String contrasena = parametros.get(7);
-		String direccion = parametros.get(9);
-		int telefono = Integer.parseInt(parametros.get(11));
+		
+		String nombre = parametros.get(1).toLowerCase();
+		String apellido = parametros.get(3).toLowerCase();
+		String email = parametros.get(5).toLowerCase();
+		String contrasena = parametros.get(7).toLowerCase();
+		String direccion = parametros.get(9).toLowerCase();
+		String tel = parametros.get(11);
 		String fotoPerfil = getServletContext().getRealPath("/img/fotoPerfil"+nombreFoto);
 		
-		//Realizamos la pesistencia en la base de datos
-		try{
-			//Damos de alta una persona primero
-			db.newUser(email, contrasena, nombre, apellido);
-			//Guardamos la imagen
-			db.newImage(fotoPerfil);
-			//Generamos el codigo de aprobacion
-			String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
-			//BUscamos el id de la imagen creada
-			int idFoto = db.searchIdImage(fotoPerfil);
-			//Guardamos datos del usuario comun
-			db.newCommonUser(email, contrasena, nombre, apellido, direccion, telefono, idFoto, false, codigoAprobacion);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		this.guardarEnBaseDeDatosUsuario(db, nombre, apellido, email, contrasena, direccion, tel, fotoPerfil);
 		
         request.setAttribute("error","Verifique su Correo. Un código de verificacion fue enviado para ingresarlo aquí");
         request.getRequestDispatcher("mensaje.jsp").forward(request, response);
@@ -125,8 +110,29 @@ public class RegistroNuevoUsuario extends HttpServlet{
 	
 	private String generarCodigoAprobacion(String email, String apellido){
 		long num = (long)((Math.random()) * 5000000);
+		int index =  email.indexOf("@");
+		email = (String) email.subSequence(0, index);
 		String codigo = email + num + apellido;
 		return codigo;
+	}
+	
+	private void guardarEnBaseDeDatosUsuario (ConexionDB db, String nombre, String apellido, String email, String contrasena, String direccion, String tel, String fotoPerfil){
+		//Realizamos la pesistencia en la base de datos
+		try{
+			//Damos de alta una persona primero
+			db.newUser(email, contrasena, nombre, apellido);
+			//Guardamos la imagen
+			
+			db.newImage(fotoPerfil);
+			//Generamos el codigo de aprobacion
+			String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
+			//BUscamos el id de la imagen creada
+			int idFoto = db.searchIdImage(fotoPerfil);
+			//Guardamos datos del usuario comun
+			db.newCommonUser(email, contrasena, nombre, apellido, direccion, tel, idFoto, false, codigoAprobacion);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

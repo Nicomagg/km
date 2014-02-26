@@ -17,6 +17,10 @@ import conexionDB.ConexionDB;
  */
 public class DBContextListener implements ServletContextListener {
 	private ConexionDB db;
+	
+	public DBContextListener() {
+        // TODO Auto-generated constructor 
+    }
 
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {

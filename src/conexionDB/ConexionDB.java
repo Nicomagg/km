@@ -449,18 +449,24 @@ public class ConexionDB {
 	}
 	
 	//add new common user
-	public void newCommonUser(String email, String contrasena, String nombre, String apellido, String direccion, int telefono, int fotoPerfil, boolean aprobacion, String codigoAprobacion) throws SQLException{
-		pst = conn.prepareStatement("INSERT INTO usuariocomun (email, contrasena, nombre, apellido, direccion, telefono, fotoPerfil, aprobacion, codigoAprobacion)"
+	public void newCommonUser(String email, String contrasena, String nombre, String apellido, String direccion, String tel, int fotoPerfil, boolean aprobacion, String codigoAprobacion) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO usuariocomun (email, contrasena, nombre, apellido, direccion, fotoperfil, aprobacion, codigoaprobacion, telefono)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		long telefono = 0;
+		try {
+		   telefono = Long.parseLong(tel);
+	   }catch (NumberFormatException e){
+	       System.out.println("not a number"); 
+	   }
 		pst.setString(1, email);
 		pst.setString(2, contrasena);
 		pst.setString(3, nombre);
 		pst.setString(4, apellido);
 		pst.setString(5, direccion);
-		pst.setInt(6, telefono);
-		pst.setInt(7, fotoPerfil);
-		pst.setBoolean(8, aprobacion);
-		pst.setString(9, codigoAprobacion);
+		pst.setInt(6, fotoPerfil);
+		pst.setBoolean(7, aprobacion);
+		pst.setString(8, codigoAprobacion);
+		pst.setLong(9, telefono);
 		st = pst.executeUpdate();
 	}
 	
