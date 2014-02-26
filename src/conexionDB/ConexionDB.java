@@ -215,6 +215,21 @@ public class ConexionDB {
 	 	return r;
 	}
 	
+	//search a image
+	public int searchIdImage(String nombre) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"imagenes\""
+	 	+ "WHERE imagen = ?");
+		pst.setString(1, nombre);
+		r = pst.executeQuery();
+		int id = 0;
+		while (r.next()) {
+		 	 id = r.getInt("idimg");
+		}
+		return id;
+	}
+	
 	//add new order
 	public void newOrder(int comercio, String fecha, String hora, boolean aprobacion, int usuarioComun) throws SQLException{
 		pst = conn.prepareStatement("INSERT INTO pedidos (comercio, fecha, hora, aprobacion, usuariocomun)"
@@ -434,9 +449,9 @@ public class ConexionDB {
 	}
 	
 	//add new common user
-	public void newCommonUser(String email, String contrasena, String nombre, String apellido, String direccion, int telefono, int fotoPerfil) throws SQLException{
-		pst = conn.prepareStatement("INSERT INTO usuariocomun (email, contrasena, nombre, apellido, direccion, telefono, fotoPerfil)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?)");
+	public void newCommonUser(String email, String contrasena, String nombre, String apellido, String direccion, int telefono, int fotoPerfil, boolean aprobacion, String codigoAprobacion) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO usuariocomun (email, contrasena, nombre, apellido, direccion, telefono, fotoPerfil, aprobacion, codigoAprobacion)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		pst.setString(1, email);
 		pst.setString(2, contrasena);
 		pst.setString(3, nombre);
@@ -444,6 +459,8 @@ public class ConexionDB {
 		pst.setString(5, direccion);
 		pst.setInt(6, telefono);
 		pst.setInt(7, fotoPerfil);
+		pst.setBoolean(8, aprobacion);
+		pst.setString(9, codigoAprobacion);
 		st = pst.executeUpdate();
 	}
 	

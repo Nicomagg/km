@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div id="regUsuario">
-			<form action="registroUsuario" method="POST">
+			<form action="registroUsuario" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<legend>Registro de Nuevo Usuario</legend>
 					<div id="regNomUs">

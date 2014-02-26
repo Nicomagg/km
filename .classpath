@@ -15,5 +15,14 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/home/landi/workspace/km/postgresql-9.3-1100.jdbc3.jar"/>
 	<classpathentry kind="lib" path="/home/landi/workspace/km/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/src/com"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-fileupload-1.2.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-fileupload-1.2.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-io-2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-io-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-io-2.4-tests.jar"/>
+	<classpathentry kind="lib" path="/home/landi/workspace/km/WebContent/WEB-INF/lib/commons-io-2.4-test-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

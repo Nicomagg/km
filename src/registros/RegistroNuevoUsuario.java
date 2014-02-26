@@ -1,18 +1,31 @@
 package registros;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import conexionDB.ConexionDB;
-
-import java.io.*; 
-import java.net.*; 
-
-import javax.servlet.*; 
-import javax.servlet.http.*; 
 
 /**
  * Servlet implementation class RegistroNuevoUsuario
  */
 public class RegistroNuevoUsuario extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	private String dirUploadFiles;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,94 +45,88 @@ public class RegistroNuevoUsuario extends HttpServlet{
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		registrarUsuario(request,response);
+		try {
+			registrarUsuario(request,response);
+		} catch (FileUploadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Primer catch");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Segundo catch");
+		}
 	}
 	
-	private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ConexionDB db = (ConexionDB) getServletContext().getAttribute("baseDeDatos");
-		String nombre = request.getParameter("regNomUs");
-		String apellido = request.getParameter("regApUs");
-		String email = request.getParameter("regEmaUs");
-		String contrasena = request.getParameter("regContUs");
-		String direccion = request.getParameter("regDirUs");
-		String telefono = request.getParameter("regTelUs");
-		String fotoPerfil = request.getParameter("regFotoPerfilUs");
 		
-		File origen = new File(fotoPerfil);
-        File destino = new File("/img/fotoPerfil/"+email+".png");
+		FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
 
-        try {
-        	InputStream in = new FileInputStream(origen);
-            OutputStream out = new FileOutputStream(destino);
-            
-            byte[] buf = new byte[1024];
-            int len;
- 
-            while ((len = in.read(buf)) > 0)
-            {
-              out.write(buf, 0, len);
-            }
- 
-            in.close();
-            out.close();
-        } catch (IOException ioe){
-            ioe.printStackTrace();
-            System.out.println("Errooooooorrrrrrrrr11111");
-        }
+		// req es la HttpServletRequest que recibimos del formulario.
+		// Los items obtenidos serán cada uno de los campos del formulario,
+		// tanto campos normales como ficheros subidos.
+		List items = upload.parseRequest(request);
+		
+		ArrayList<String> parametros = new ArrayList<String>();
+		String nombreFoto = "";
+		// Se recorren todos los items, que son de tipo FileItem
+		for (Object item : items) {
+			FileItem uploaded = (FileItem) item;
+			
+		   // Hay que comprobar si es un campo de formulario. Si no lo es, se guarda el fichero
+		   // subido donde nos interese
+
+			String rutaRelativaApp= getServletContext().getRealPath("/img/fotoPerfil");
+			if (!uploaded.isFormField()) {
+				int index =  (parametros.get(5)).indexOf(".com");
+				nombreFoto = (String) (parametros.get(5)).subSequence(0, index);
+				// No es campo de formulario, guardamos el fichero en algún sitio
+				File fichero = new File(rutaRelativaApp, nombreFoto);
+				uploaded.write(fichero);
+			} else {
+				// es un campo de formulario, podemos obtener clave y valor
+				parametros.add(uploaded.getFieldName());
+				parametros.add(uploaded.getString());
+			}
+		}
+
+		String nombre = parametros.get(1);
+		String apellido = parametros.get(3);
+		String email = parametros.get(5);
+		String contrasena = parametros.get(7);
+		String direccion = parametros.get(9);
+		int telefono = Integer.parseInt(parametros.get(11));
+		String fotoPerfil = getServletContext().getRealPath("/img/fotoPerfil"+nombreFoto);
+		
+		//Realizamos la pesistencia en la base de datos
+		try{
+			//Damos de alta una persona primero
+			db.newUser(email, contrasena, nombre, apellido);
+			//Guardamos la imagen
+			db.newImage(fotoPerfil);
+			//Generamos el codigo de aprobacion
+			String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
+			//BUscamos el id de la imagen creada
+			int idFoto = db.searchIdImage(fotoPerfil);
+			//Guardamos datos del usuario comun
+			db.newCommonUser(email, contrasena, nombre, apellido, direccion, telefono, idFoto, false, codigoAprobacion);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
         request.setAttribute("error","Verifique su Correo. Un código de verificacion fue enviado para ingresarlo aquí");
         request.getRequestDispatcher("mensaje.jsp").forward(request, response);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		//Obtenemos la ruta absoluta del sistema donde queremos guardar la imagen
-//        String fileName = this.getServletContext().getRealPath("/img/fotoPerfil");
-//		String fotoPerfil = request.getParameter("regFotoPerfilUs");
-//        //Guardamos la imagen en disco con la ruta que hemos obtenido en el paso anterior
-//        boolean ok = Tools.guardarImagenDeProdructoEnElSistemaDeFicheros(request.getPart("regFotoPerfilUs").getInputStream(), fileName);
-//		if (ok == false){
-////            request.setAttribute("error", "Fallo al guardar archivo. Intente nuevamente");
-////            request.getRequestDispatcher("mensaje.jsp").forward(request, response);
-////            return;
-//        }else{
-//        	request.setAttribute("error",
-//        			nombre+"\n"+
-//        			apellido+"\n"+
-//        			email+"\n"+
-//        			contrasena+"\n"+
-//        			direccion+"\n"+
-//        			telefono+"\n"+
-//        			fotoPerfil+"\n"
-//        			+ "Verifique su Correo. Un código de verificacion fue enviado para ingresarlo aquí");
-//            request.getRequestDispatcher("mensaje.jsp").forward(request, response);
-//        }
+	}
+	
+	private String generarCodigoAprobacion(String email, String apellido){
+		long num = (long)((Math.random()) * 5000000);
+		String codigo = email + num + apellido;
+		return codigo;
 	}
 
 }
