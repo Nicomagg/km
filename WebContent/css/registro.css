@@ -5,48 +5,52 @@
    src: url(../fonts/kiosko.ttf) format('truetype');
 }
 
+#regKiosko{
+	display: none;
+}
+
 #regUsuario{
 	display: none;
 }
 
-#regUsuario form{
+#regKiosko form, #regUsuario form{
 	margin-left: 15%;
 	margin-top: 2em;
 	text-align: center;
 	width: 70%;
 }
 
-#regUsuario form fieldset legend{
+#regKiosko form fieldset legend, #regUsuario form fieldset legend{
 	color: #eee;
 	font-family: kiosko;
 	font-size: 1.7em;
 }
 
-#regUsuario form fieldset div{
+#regKiosko form fieldset div, #regUsuario form fieldset div{
 	margin-left: 10%;
 	margin-top: 1em;
 	width: 89%;
 }
 
-#regUsuario form fieldset div label{
+#regKiosko form fieldset div label, #regUsuario form fieldset div label{
 	color: #eee;
 	float: left;
 	padding-top: 0.3em;
 	width: 20%;
 }
 
-#regUsuario form fieldset div input{
+#regKiosko form fieldset div input, #regUsuario form fieldset div input{
 	height: 30px;
 	width: 60%;
 }
 
-#regUsuario form fieldset div div{
+#regKiosko form fieldset div div, #regUsuario form fieldset div div{
 	color: red;
 	font-size: 0.9em;
 	text-align: left;
 }
 
-#regUsuario form fieldset p{
+#regKiosko form fieldset p, #regUsuario form fieldset p{
 	color: rgba(0,0,0,0.8);
 	font-size: 0.9em;
 	padding: 0% 2%;
@@ -54,13 +58,17 @@
 	text-indent: 0em;
 }
 
-#regUsuario form fieldset ul{
+#regKiosko form fieldset ul, #regUsuario form fieldset ul{
 	color: rgba(0,0,0,0.8);
 	font-size: 0.9em;
 	list-style-type: square;
 	margin: 0;
 	padding: 0% 5% 0% 10%;
-	text-align: justif
+	text-align: justify;
+}
+
+#regKiosko ul li a, #regUsuario ul li a{
+	color: #8181F7;
 }
 
 #selecTipoReg h2{
@@ -87,12 +95,16 @@
 	border: 5px inset rgba(0, 0, 0, 0.8);
 }
 
-#subRegUs{
+#subRegKio, #subRegUs{
 	background: #ddd;
 	border: 5px outset rgba(0, 0, 0, 0.7);
 	border-radius: 8px;
 	height: 2.4em;
 	width: 50%;
+}
+
+#subRegKio:hover{
+	border: 5px inset rgba(0, 0, 0, 0.8);
 }
 
 #subRegUs:hover{

@@ -17,7 +17,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import conexionDB.ConexionDB;
-
 /**
  * Servlet implementation class RegistroNuevoUsuario
  */
@@ -101,10 +100,12 @@ public class RegistroNuevoUsuario extends HttpServlet implements Serializable{
 		String direccion = parametros.get(9).toLowerCase();
 		String tel = parametros.get(11);
 		String fotoPerfil = getServletContext().getRealPath("/img/fotoPerfil"+nombreFoto);
+		//Generamos el codigo de aprobacion
+		String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
 		
-		this.guardarEnBaseDeDatosUsuario(db, nombre, apellido, email, contrasena, direccion, tel, fotoPerfil);
-		
-        request.setAttribute("error","Verifique su Correo. Un código de verificacion fue enviado para ingresarlo aquí");
+		this.guardarEnBaseDeDatosUsuario(db, nombre, apellido, email, contrasena, direccion, tel, fotoPerfil, codigoAprobacion);
+		request.setAttribute("validar",true);
+        request.setAttribute("error","Verifique su Correo. Un código de validación fue enviado para ingresarlo aquí(Funcionalidad no terminado. Todos los usuario se dan de alta nomas)");
         request.getRequestDispatcher("mensaje.jsp").forward(request, response);
 	}
 	
@@ -116,16 +117,15 @@ public class RegistroNuevoUsuario extends HttpServlet implements Serializable{
 		return codigo;
 	}
 	
-	private void guardarEnBaseDeDatosUsuario (ConexionDB db, String nombre, String apellido, String email, String contrasena, String direccion, String tel, String fotoPerfil){
+	private void guardarEnBaseDeDatosUsuario (ConexionDB db, String nombre, String apellido, String email, String contrasena, String direccion, String tel, String fotoPerfil, String codigoAprobacion){
 		//Realizamos la pesistencia en la base de datos
 		try{
 			//Damos de alta una persona primero
 			db.newUser(email, contrasena, nombre, apellido);
-			//Guardamos la imagen
 			
+			//Guardamos la imagen
 			db.newImage(fotoPerfil);
-			//Generamos el codigo de aprobacion
-			String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
+	
 			//BUscamos el id de la imagen creada
 			int idFoto = db.searchIdImage(fotoPerfil);
 			//Guardamos datos del usuario comun

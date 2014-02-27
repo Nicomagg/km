@@ -2,11 +2,12 @@ $(document).on("ready", inicio);
 
 function inicio () {
 	analisisPosicionMenu();
-	$("#login").on("click",aparecerLogin);
-	$("#registrarse").on("click",redirecRegistro);
-	$("#regUsuario form").on("submit",controlRegUs);
 	$("#formularioRegUsuario").on("click",mostrarFormRegUsu);
 	$("#formularioRegKiosko").on("click",mostrarFormRegKio);
+	$("#login").on("click",aparecerLogin);
+	$("#registrarse").on("click",redirecRegistro);
+	$("#regKiosko form").on("submit",controlRegKio);
+	$("#regUsuario form").on("submit",controlRegUs);
 }
 
 function aparecerLogin(){
@@ -17,6 +18,7 @@ function aparecerLogin(){
   	}
 }
 
+//verifica si debe marcar un menu o no
 function analisisPosicionMenu() {
 	var url = $(location).attr('pathname');
 	$("nav ul li").removeClass();
@@ -25,6 +27,118 @@ function analisisPosicionMenu() {
 			$("#navInicio").addClass('active');
 			break;
 	}
+}
+
+//Valida formulario de registro de kiosko antes de enviarse
+function controlRegKio(event) {
+	//Lipio los campos que pudieron haber sido marcados en una primera Instancia
+	$("#regKiosko span").text("");
+	$("#regKiosko form fieldset div").removeClass("errorCampoRegUs");
+
+	//Busco campos inválidos
+	if(isNaN($("#regCuitKio input").val())||(!($("#regCuitKio input").val()!=""))){
+		if (isNaN($("#regCuitKio input").val())) {
+			$("#regCuitKio div span").text("El valor ingresado debe ser un número");
+		};
+		if(!($("#regCuitKio input").val()!="")){
+			$("#regCuitKio div span").text("Campo incompleto");
+		};
+		$("#regCuitKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#regNomDueKio input").val()))||(!($("#regNomDueKio input").val()!=""))||(($("#regNomDueKio input").val().length) > 50)){
+		if (!(isNaN($("#regNomDueKio input").val()))) {
+			$("#regNomDueKio div span").text("El valor ingresado no debe ser un número");
+		};
+		if(!($("#regNomDueKio input").val()!="")){
+			$("#regNomDueKio div span").text("Campo incompleto");
+		};
+		if (($("#regNomDueKio input").val().length) > 50) {
+			$("#regNomDueKio div span").text("El texto ingresado debe ser menor a 50 caracteres");
+		};
+		$("#regNomDueKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#regApDueKio input").val()))||(!($("#regApDueKio input").val()!=""))||(($("#regApDueKio input").val().length) > 50)){
+		if (!(isNaN($("#regApDueKio input").val()))) {
+			$("#regApDueKio div span").text("El valor ingresado no debe ser un número");
+		};
+		if(!($("#regApDueKio input").val()!="")){
+			$("#regApDueKio div span").text("Campo incompleto");
+		};
+		if (($("#regApDueKio input").val().length) > 50) {
+			$("#regApDueKio div span").text("El texto ingresado debe ser menor a 50 caracteres");
+		};
+		$("#regApDueKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#regNomKio input").val()))||(!($("#regNomKio input").val()!=""))||(($("#regNomKio input").val().length) > 50)){
+		if (!(isNaN($("#regNomKio input").val()))) {
+			$("#regNomKio div span").text("El valor ingresado no debe ser un número");
+		};
+		if(!($("#regNomKio input").val()!="")){
+			$("#regNomKio div span").text("Campo incompleto");
+		};
+		if (($("#regNomKio input").val().length) > 50) {
+			$("#regNomKio div span").text("El texto ingresado debe ser menor a 50 caracteres");
+		};
+		$("#regNomKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if (($("#regEmaKio input").val().indexOf('@', 0) == -1) || ($("#regEmaKio input").val().indexOf('.', 0) == -1)) {
+		$("#regEmaKio div span").text("Correo no válida");	
+		$("#regEmaKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if (($("#regContKio input").val()=="")||($("#regContKio input").val().length > 99)) {
+		if ($("#regContKio input").val()=="") {
+			$("#regContKio div span").text("Campo incompleto");
+		};
+		if ($("#regContKio input").val().length > 100) {
+			$("#regContKio div span").text("El texto ingresado debe ser menor a 100 caracteres");	
+		};
+		$("#regContKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#regDirKio input").val()))||(!($("#regDirKio input").val()!=""))||(($("#regDirKio input").val().length) > 50)){
+		if (!(isNaN($("#regDirKio input").val()))) {
+			$("#regDirKio div span").text("El valor ingresado no debe ser solo numérico");
+		};
+		if(!($("#regDirKio input").val()!="")){
+			$("#regDirKio div span").text("Campo incompleto");
+		};
+		if (($("#regDirKio input").val().length) > 100) {
+			$("#regDirKio div span").text("El texto ingresado debe ser menor a 100 caracteres");
+		};
+		$("#regDirKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if((isNaN($("#regTelKio input").val()))){
+		$("#regTelKio div span").text("El valor ingresado debe ser solo numérico");
+		$("#regTelKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	var file = $("#regFotoPerfilKio input").val();
+	var ext = file.split('.').pop().toLowerCase();
+	if ((file=="")||(($.inArray(ext, ['jpg']) == -1)&&($.inArray(ext, ['png']) == -1))) {
+		if($("#regFotoPerfilKio input").val()==""){
+			$("#regFotoPerfilKio div span").text("Campo incompleto");
+		}
+		if(($.inArray(ext, ['jpg']) == -1)&&($.inArray(ext, ['png']) == -1)){
+		 	$("#regFotoPerfilKio div span").text("El archivo ingresado no corresponde a una imagen con extensión jsp o png");	
+		}
+		$("#regFotoPerfilKio").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+	alert("entra");
 }
 
 //Valida formulario de registro de usuario antes de enviarse
@@ -95,7 +209,7 @@ function controlRegUs(event) {
 
 	if((isNaN($("#regTelUs input").val()))){
 		$("#regTelUs div span").text("El valor ingresado debe ser solo numérico");
-		$("#regDirUs").addClass("errorCampoRegUs");
+		$("#regTelUs").addClass("errorCampoRegUs");
 		event.preventDefault();
 	};
 
@@ -108,25 +222,26 @@ function controlRegUs(event) {
 		if(($.inArray(ext, ['jpg']) == -1)&&($.inArray(ext, ['png']) == -1)){
 		 	$("#regFotoPerfilUs div span").text("El archivo ingresado no corresponde a una imagen con extensión jsp o png");	
 		}
-		$("#regFotoPerfilUs").addClass("errorCampoRegUs&&");
+		$("#regFotoPerfilUs").addClass("errorCampoRegUs");
 		event.preventDefault();
 	};
+
 }
 
 function mostrarFormRegUsu() {
-	//falta ocultar el formulario del kiosko
+	$("#regKiosko").css('display','none');
 	$("#regUsuario").show(300);
 }
 
 function mostrarFormRegKio() {
 	$("#regUsuario").css('display','none');
-	//Falta mostrar el formulario para registrar el kiosko	
+	$("#regKiosko").show(300);	
 }
 
 function redirecRegistro() {
-	var url = $(location).attr('pathname')
+	var url = $(location).attr('pathname');
 	if(!(url == "/km/registro.jsp")){
-		var url = "/km/registro.jsp"
+		var url = "/km/registro.jsp";
 		$(location).attr('href',url); 	
 	}	
 }

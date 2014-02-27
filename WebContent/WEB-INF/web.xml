@@ -23,6 +23,12 @@
 		<description></description>
 		<servlet-class>listeners.DBContextListener</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>RegistroNuevoKiosko</servlet-name>
+		<display-name>RegistroNuevoKiosko</display-name>
+		<description></description>
+		<servlet-class>registros.RegistroNuevoKiosko</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>RegistroNuevoUsuario</servlet-name>
@@ -32,6 +38,11 @@
 		<servlet-name>DBContextListener</servlet-name>
 		<url-pattern>/DBContextListener</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistroNuevoKiosko</servlet-name>
+		<url-pattern>/RegistroKiosko</url-pattern>
+	</servlet-mapping>
+
   	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

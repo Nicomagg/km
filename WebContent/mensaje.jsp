@@ -22,6 +22,7 @@
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="js/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
 </head>
 <body>
 	<header>
@@ -32,9 +33,11 @@
 			<% String error = (String)request.getAttribute("error"); %>
 			<%=error %>
 		</p>
+		<button>Seguir...</button>
 	</section>
 	<footer>
 		<%@ include file="html/footer.html" %>
 	</footer>
+
 </body>
 </html>
