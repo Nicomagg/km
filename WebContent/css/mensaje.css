@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+section{
+	text-align: center;
+}
+
+section button{
+	background: #ddd;
+	border: 5px outset rgba(0, 0, 0, 0.7);
+	border-radius: 8px;
+	height: 2.4em;
+	width: 50%;
+}
+
+section button:hover{
+	border: 5px inset rgba(0, 0, 0, 0.8);
+}
+
+section p{
+	margin: 0;
+	padding: 10%;
+}

@@ -10,15 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
-	<style type="text/css">
-		section{
-			text-align: center;
-		}
-		section p{
-			margin: 0;
-			padding: 10%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/mensaje.css">
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="js/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -33,11 +25,10 @@
 			<% String error = (String)request.getAttribute("error"); %>
 			<%=error %>
 		</p>
-		<button>Seguir...</button>
+		<button id="seguir">Seguir...</button>
 	</section>
 	<footer>
 		<%@ include file="html/footer.html" %>
 	</footer>
-
 </body>
 </html>

@@ -8,6 +8,7 @@ function inicio () {
 	$("#registrarse").on("click",redirecRegistro);
 	$("#regKiosko form").on("submit",controlRegKio);
 	$("#regUsuario form").on("submit",controlRegUs);
+	$("#seguir").on("click",redirecInicio);
 }
 
 function aparecerLogin(){
@@ -138,7 +139,6 @@ function controlRegKio(event) {
 		$("#regFotoPerfilKio").addClass("errorCampoRegUs");
 		event.preventDefault();
 	};
-	alert("entra");
 }
 
 //Valida formulario de registro de usuario antes de enviarse
@@ -236,6 +236,11 @@ function mostrarFormRegUsu() {
 function mostrarFormRegKio() {
 	$("#regUsuario").css('display','none');
 	$("#regKiosko").show(300);	
+}
+
+function redirecInicio() {
+	location.href("km/inicio");
+	console.log("entra");
 }
 
 function redirecRegistro() {

@@ -142,19 +142,21 @@ public class ConexionDB {
 	}
 	
 	//add new commerce
-	public void newCommerce(String email, String contrasena, String nombre, String apellido, int cuit, String nomNegocio, String direccion, int telefono, int fotoPerfil, int puntuacion) throws SQLException{
-		pst = conn.prepareStatement("INSERT INTO comercios (email, contrasena, nombre, apellido, cuit, nombrenegocio, direccion, telefono, fotoperfil, puntuacion)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	public void newCommerce(String email, String contrasena, String nombre, String apellido, long cuit, String nomNegocio, String direccion, long telefono, int fotoPerfil, int puntuacion, boolean aprobacion, String codigoAprobacion) throws SQLException{
+		pst = conn.prepareStatement("INSERT INTO comercios (email, contrasena, nombre, apellido, cuit, nombrenegocio, direccion, telefono, fotoperfil, puntuacion, aprobacion, codigoaprobacion)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		pst.setString(1, email);
 		pst.setString(2, contrasena);
 		pst.setString(3, nombre);
 		pst.setString(4, apellido);
-		pst.setInt(5, cuit);
+		pst.setLong(5, cuit);
 		pst.setString(6, nomNegocio);
 		pst.setString(7, direccion);
-		pst.setInt(8, telefono);
+		pst.setLong(8, telefono);
 		pst.setInt(9, fotoPerfil);
 		pst.setInt(10, puntuacion);
+		pst.setBoolean(11, aprobacion);
+		pst.setString(12, codigoAprobacion);
 		st = pst.executeUpdate();
 	}
 	
