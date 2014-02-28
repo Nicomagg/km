@@ -27,6 +27,15 @@ function analisisPosicionMenu() {
 		case "/km/":
 			$("#navInicio").addClass('active');
 			break;
+		case "/km/kiosko.jsp":
+			$("#navKioskos").addClass('active');
+			break;
+		case "/km/contacto.jsp":
+			$("#navContactos").addClass('active');
+			break;
+		case "/km/ayuda.jsp":
+			$("#navAyuda").addClass('active');
+			break;
 	}
 }
 
@@ -239,8 +248,11 @@ function mostrarFormRegKio() {
 }
 
 function redirecInicio() {
-	location.href("km/inicio");
-	console.log("entra");
+	var url = $(location).attr('pathname');
+	if(!(url == "/km/")){
+		var url = "/km/";
+		$(location).attr('href',url); 	
+	}
 }
 
 function redirecRegistro() {
