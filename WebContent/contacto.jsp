@@ -21,19 +21,42 @@
 	</header>
 	<section>
 		<h2>Para contactarte con el administrador deja tu mensaje aquí...</h2>
-		<form id="formComentario" action="" method="GET">
-			<div>
-				<label>Asunto:</label>
-				<input type="text" name="asuntoMensaje">
-			</div>
-			<div>
-				<h3>Mensaje:</h3>
-				<textarea name="comentario" form="formComentario" maxlength="200">
+		<%	
+			if(mensaje=="registrado"){
+		%>
+			<form id="formMensajeAdmin" class="formMensajeAdmin" action="" method="POST">
+				<div id="asuntoMensajeAdmin">
+					<label>Asunto:</label>
+					<input type="text" name="asuntoMensaje">
+					<span></span>
+				</div>
+				<div id="comentarioAdmin">
+					<h3>Mensaje:</h3>
+					<textarea name="comentario" form="formComentario" maxlength="200">
+					</textarea>
+					<span></span>
+				</div>
+				<input class="buttonEnviarComentario" type="submit" value="Enviar Comentario">
+			</form>
+		<% 
+			}else{
+		%>
+			<form id="formMensajeAdminError" class="formMensajeAdmin" action="" method="POST">
+				<div>
+					<label>Asunto:</label>
+					<input type="text" name="asuntoMensaje">
+				</div>
+				<div>
+					<h3>Mensaje:</h3>
+					<textarea name="comentario" form="formComentario" maxlength="200">
 
-				</textarea>
-			</div>
-			<input id="buttonEnviarComentario" type="submit" value="Enviar Comentario">
-		</form>
+					</textarea>
+				</div>
+				<input class="buttonEnviarComentario" type="submit" value="Enviar Comentario">
+			</form>
+		<%
+			}
+		%>
 		<div id="aclaracion">
 			<h4>Aclaración:</h4>
 			<ul>

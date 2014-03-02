@@ -5,6 +5,8 @@ function inicio () {
 	$("#formularioRegUsuario").on("click",mostrarFormRegUsu);
 	$("#formularioRegKiosko").on("click",mostrarFormRegKio);
 	$("#login").on("click",aparecerLogin);
+	$("#formMensajeAdmin").on("submit",verifCamMensAdmin);
+	$("#formMensajeAdminError").on("submit",noRegistradoMensAdmin);
 	$("#registrarse").on("click",redirecRegistro);
 	$("#regKiosko form").on("submit",controlRegKio);
 	$("#regUsuario form").on("submit",controlRegUs);
@@ -247,6 +249,11 @@ function mostrarFormRegKio() {
 	$("#regKiosko").show(300);	
 }
 
+function noRegistradoMensAdmin(e){
+	e.preventDefault();
+	alert("Usted debe estar logueado o debe registrarse para poder mandar un mensaje al administrados!!!");
+}
+
 function redirecInicio() {
 	var url = $(location).attr('pathname');
 	if(!(url == "/km/")){
@@ -261,4 +268,37 @@ function redirecRegistro() {
 		var url = "/km/registro.jsp";
 		$(location).attr('href',url); 	
 	}	
+}
+
+function verifCamMensAdmin(event) {
+	$("#formMensajeAdmin span").text("");
+	$("#formMensajeAdmin div").removeClass("errorCampoRegUs");
+
+	if(!(isNaN($("#asuntoMensajeAdmin input").val()))||(!($("#asuntoMensajeAdmin input").val()!=""))||(($("#asuntoMensajeAdmin input").val().length) > 50)){
+		if (!(isNaN($("#asuntoMensajeAdmin input").val()))) {
+			$("#asuntoMensajeAdmin span").text("El valor ingresado no debe ser un número");
+		};
+		if(!($("#asuntoMensajeAdmin input").val()!="")){
+			$("#asuntoMensajeAdmin span").text("Campo incompleto");
+		};
+		if (($("#asuntoMensajeAdmin input").val().length) > 50) {
+			$("#asuntoMensajeAdmin span").text("El texto ingresado debe ser menor a 50 caracteres");
+		};
+		$("#asuntoMensajeAdmin").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#comentarioAdmin textarea").val()))||(!($("#comentarioAdmin textarea").val()!=""))||(($("#comentarioAdmin textarea").val().length) > 200)){
+		if (!(isNaN($("#comentarioAdmin textarea").val()))) {
+			$("#comentarioAdmin span").text("El valor ingresado no debe ser un número");
+		};
+		if(!($("#comentarioAdmin textarea").val()!="")){
+			$("#comentarioAdmin span").text("Campo incompleto");
+		};
+		if (($("#comentarioAdmin textarea").val().length) > 200) {
+			$("#comentarioAdmin span").text("El texto ingresado debe ser menor a 200 caracteres");
+		};
+		$("#comentarioAdmin").addClass("errorCampoRegUs");
+		event.preventDefault();
+	};
 }
