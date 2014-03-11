@@ -29,6 +29,12 @@
 		<description></description>
 		<servlet-class>registros.RegistroNuevoKiosko</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ValidacionRegistro</servlet-name>
+		<display-name>ValidacionRegistro</display-name>
+		<description></description>
+		<servlet-class>registros.ValidacionRegistro</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>RegistroNuevoUsuario</servlet-name>
@@ -41,6 +47,10 @@
 	<servlet-mapping>
 		<servlet-name>RegistroNuevoKiosko</servlet-name>
 		<url-pattern>/RegistroKiosko</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidacionRegistro</servlet-name>
+		<url-pattern>/ValidacionRegistro</url-pattern>
 	</servlet-mapping>
 
   	

@@ -7,6 +7,7 @@ function inicio () {
 	$("#login").on("click",aparecerLogin);
 	$("#formMensajeAdmin").on("submit",verifCamMensAdmin);
 	$("#formMensajeAdminError").on("submit",noRegistradoMensAdmin);
+	$("#formValidacion").on("submit",controlCampVal);
 	$("#registrarse").on("click",redirecRegistro);
 	$("#regKiosko form").on("submit",controlRegKio);
 	$("#regUsuario form").on("submit",controlRegUs);
@@ -39,6 +40,34 @@ function analisisPosicionMenu() {
 			$("#navAyuda").addClass('active');
 			break;
 	}
+}
+
+//Validar formulario de validacion
+function controlCampVal(event) {
+	//limpiamos span y div
+	$("#formValidacion span").text("");
+	$("#formValidacion div").removeClass("errorValCamp");
+
+	//Busco campos inválidos
+	if (($("#emaValid input").val().indexOf('@', 0) == -1) || ($("#emaValid input").val().indexOf('.', 0) == -1)) {
+		$("#emaValidSpan").text("Correo no válida");	
+		$("#emaValid").addClass("errorValCamp");
+		event.preventDefault();
+	};
+
+	if(!(isNaN($("#codigAprob input").val()))||(!($("#codigAprob input").val()!=""))||(($("#codigAprob input").val().length) > 400)){
+		if (!(isNaN($("#codigAprob input").val()))) {
+			$("#codigAprobSpan").text("El valor ingresado no debe ser un número solamente");
+		};
+		if(!($("#codigAprob input").val()!="")){
+			$("#codigAprobSpan").text("Campo incompleto");
+		};
+		if (($("#codigAprob input").val().length) > 400) {
+			$("#codigAprobSpan").text("El texto ingresado debe ser menor a 400 caracteres. Verifique el código en su correo");
+		};
+		$("#codigAprob").addClass("errorValCamp");
+		event.preventDefault();
+	};
 }
 
 //Valida formulario de registro de kiosko antes de enviarse
