@@ -11,6 +11,10 @@ section h2{
 	text-align: left;
 }
 
+section h3{
+	color: red;
+}
+
 span{
 	color: red;
 }

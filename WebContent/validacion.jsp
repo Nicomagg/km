@@ -22,7 +22,7 @@
 	</header>
 	<section>
 		<h2>Validar Cuenta (Verifique su correo para obtener el código de aprobación)</h2>
-		<form id="formValidacion" action="ValidacionRegistro" method="GET">
+		<form id="formValidacion" action="ValidacionRegistro" method="POST">
 			<div id="emaValid">
 				<label>Email:</label>
 				<input type="email" name="emaValid">
@@ -39,6 +39,16 @@
 			<br>
 			<input id="buttonValidar" type="submit" value="Validar">
 		</form>
+		<br>
+		<% 
+			String validacion = (String) request.getAttribute("validacion");
+			if(validacion=="si"){
+				String mensValid = (String) request.getAttribute("mensValid");
+		%>
+				<h3> <%= mensValid %> </h3>
+		<% 
+			}
+		%>
 	</section>
 	<footer>
 		<%@ include file="html/footer.html" %>

@@ -90,6 +90,7 @@ public class RegistroNuevoUsuario extends HttpServlet implements Serializable{
 			if (!uploaded.isFormField()) {
 				int index =  (parametros.get(5)).indexOf(".com");
 				nombreFoto = (String) (parametros.get(5)).subSequence(0, index);
+				nombreFoto = nombreFoto + ".png";
 				// No es campo de formulario, guardamos el fichero en algún sitio
 				File fichero = new File(rutaRelativaApp, nombreFoto);
 				uploaded.write(fichero);
@@ -106,13 +107,13 @@ public class RegistroNuevoUsuario extends HttpServlet implements Serializable{
 		String contrasena = parametros.get(7).toLowerCase();
 		String direccion = parametros.get(9).toLowerCase();
 		String tel = parametros.get(11);
-		String fotoPerfil = getServletContext().getRealPath("/img/fotoPerfil"+nombreFoto);
+		String fotoPerfil = getServletContext().getRealPath("/img/fotoPerfil/"+nombreFoto+".png");
 		//Generamos el codigo de aprobacion
 		String codigoAprobacion = this.generarCodigoAprobacion(email, apellido);
 		
 		this.guardarEnBaseDeDatosUsuario(db, nombre, apellido, email, contrasena, direccion, tel, fotoPerfil, codigoAprobacion);
 		this.enviarCodVal(email, codigoAprobacion);
-        request.getRequestDispatcher("validacio.jsp").forward(request, response);
+        request.getRequestDispatcher("validacion.jsp").forward(request, response);
 	}
 	
 	private String generarCodigoAprobacion(String email, String apellido){

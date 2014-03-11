@@ -57,11 +57,9 @@ public class RegistroNuevoKiosko extends HttpServlet implements Serializable{
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Primer catch");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Segundo catch");
 		}
 	}
 
@@ -93,6 +91,7 @@ public class RegistroNuevoKiosko extends HttpServlet implements Serializable{
 				
 				int index =  (parametros.get(9)).indexOf(".com");
 				nombreFoto = (String) (parametros.get(9)).subSequence(0, index);
+				nombreFoto = nombreFoto + ".png";
 				// No es campo de formulario, guardamos el fichero en algún sitio
 				File fichero = new File(rutaRelativaApp, nombreFoto);
 				uploaded.write(fichero);
@@ -111,7 +110,7 @@ public class RegistroNuevoKiosko extends HttpServlet implements Serializable{
 		String contrasena = parametros.get(11).toLowerCase();
 		String direccion = parametros.get(13).toLowerCase();
 		String tel = parametros.get(15);
-		String fotoPerfil = getServletContext().getRealPath("/img/fotoKiosko"+nombreFoto);
+		String fotoPerfil = getServletContext().getRealPath("/img/fotoKiosko/"+nombreFoto+".png");
 		System.out.println(cuit+" "+nombreDuenio+" "+apellidoDuenio+" "+nombreKiosko+" "+email+" "+contrasena+" "+direccion+" "+tel+" "+fotoPerfil);
 		
 		//Generamos el codigo de aprobacion

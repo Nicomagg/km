@@ -169,7 +169,7 @@ public class ConexionDB {
 	}
 	
 	//search a commerce for name
-	public ResultSet searchCommercetForName(String nombreNegocio) throws SQLException{
+	public ResultSet searchCommerceForName(String nombreNegocio) throws SQLException{
 		pst = conn.prepareStatement(
 	 	"SELECT *"
 	 	+ "FROM \"comercios\""
@@ -180,7 +180,7 @@ public class ConexionDB {
 	}
 	
 	//search a commerce for address
-	public ResultSet searchCommercetForAddress(String direccion) throws SQLException{
+	public ResultSet searchCommerceForAddress(String direccion) throws SQLException{
 		pst = conn.prepareStatement(
 	 	"SELECT *"
 	 	+ "FROM \"comercios\""
@@ -188,6 +188,27 @@ public class ConexionDB {
 		pst.setString(1, direccion);
 		r = pst.executeQuery();
 	 	return r;
+	}
+	
+	//search a commerce for email
+	public ResultSet searchCommerceForEmail(String email) throws SQLException{
+		pst = conn.prepareStatement(
+	 	"SELECT *"
+	 	+ "FROM \"comercios\""
+	 	+ "WHERE email = ?");
+		pst.setString(1, email);
+		r = pst.executeQuery();
+	 	return r;
+	}
+	
+	//Update aprobacion
+	public void updateAprobCommerce(boolean aprob, String email) throws SQLException{
+		pst = conn.prepareStatement("UPDATE comercio"
+				+ "SET aprobacion = ?"
+				+ "WHERE email = ?");
+		pst.setBoolean(1, aprob);
+		pst.setString(2, email);
+		st = pst.executeUpdate();
 	}
 	
 	//add new image
@@ -511,5 +532,15 @@ public class ConexionDB {
 		pst.setString(1, apellido);
 		r = pst.executeQuery();
 	 	return r;
+	}
+	
+	//Update aprobacion
+	public void updateAprobCommonUser(boolean aprob, String email) throws SQLException{
+		pst = conn.prepareStatement("UPDATE usuariocomun "
+				+ "SET aprobacion=?"
+				+ "WHERE email = ?");
+		pst.setBoolean(1, aprob);
+		pst.setString(2, email);
+		st = pst.executeUpdate();
 	}
 }
