@@ -2,6 +2,7 @@ $(document).on("ready", inicio);
 
 function inicio () {
 	analisisPosicionMenu();
+	$("#barraUsuarioNom").on("click",menuOpcionesUsuario);
 	$("#formularioRegUsuario").on("click",mostrarFormRegUsu);
 	$("#formularioRegKiosko").on("click",mostrarFormRegKio);
 	$("#login").on("click",aparecerLogin);
@@ -266,6 +267,14 @@ function controlRegUs(event) {
 		event.preventDefault();
 	};
 
+}
+
+function menuOpcionesUsuario(){
+	if ( $( "#menuOpcionesUsuario" ).is(":hidden") ) {
+    	$("#menuOpcionesUsuario").show(30);
+  	} else {
+    	$("#menuOpcionesUsuario").css("display","none");
+  	}
 }
 
 function mostrarFormRegUsu() {

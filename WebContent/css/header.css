@@ -122,6 +122,53 @@ nav div form figure img{
 	width: 100%;
 }
 
+#barraUsuarioNom{
+	color: #aaa;
+	padding-left: 5px;
+	width: 65%;
+}
+
+#barraUsuarioNom:hover{
+	color: #fff;
+	cursor: pointer;
+}
+
+#barraUsuarioNom p{
+	word-wrap: break-word;
+}
+
+#barraUsuarioReg{
+	background-color: rgba(0,0,0,0.7);
+	border: 2px solid rgba(0,0,0,1);
+	-moz-border-radius-bottomleft:1em;
+	-webkit-border-bottom-left-radius:1em;
+	border-bottom-left-radius:1em;
+	float: right;
+	height: 3em;
+	width: 15em;
+}
+
+#barraUsuarioReg figure{
+	-moz-border-radius-bottomleft:1em;
+	-webkit-border-bottom-left-radius:1em;
+	border-bottom-left-radius:1em;
+	height: 3em;
+	width: 30%;
+}
+
+#barraUsuarioReg figure img{
+	-moz-border-radius-bottomleft:1em;
+	-webkit-border-bottom-left-radius:1em;
+	border-bottom-left-radius:1em;
+	height: 100%;
+	width: 100%;
+}
+
+#barraUsuarioNom, #barraUsuarioReg figure{
+	display: inline-block;
+	vertical-align: top;
+}
+
 #buscador{
 	background: rgba(255,255,255,0);
 	border: 0;
@@ -139,6 +186,12 @@ nav div form figure img{
 	width: 70px;
 }
 
+#CerrarSesionUsuario{
+	-moz-border-radius-bottomleft:1em;
+	-webkit-border-bottom-left-radius:1em;
+	border-bottom-left-radius:1em;
+}
+
 #contrasenaIngre div a{
 	color: rgba(0,0,0,0.8);
 	font-size: 0.8em;
@@ -147,6 +200,12 @@ nav div form figure img{
 
 #contrasenaIngre div a:hover{
 	color: #eee;
+}
+
+#datosPersonalesUsuario{
+	-moz-border-radius-topleft:1em;
+	-webkit-border-top-left-radius:1em;
+	border-top-left-radius:1em;
 }
 
 #ingreso{
@@ -186,6 +245,32 @@ nav div form figure img{
 #login:hover{
 	border: solid 2 #ddd;
 	color: #ddd;
+}
+
+#menuOpcionesUsuario{
+	background-color: #aaa;
+	-moz-border-radius-bottomleft:1em;
+	-moz-border-radius-topleft:1em;
+	-webkit-border-bottom-left-radius:1em;
+	-webkit-border-top-left-radius:1em;
+	border-bottom-left-radius:1em;
+	border-top-left-radius:1em;
+	text-align: center;
+	width: 100%;
+}
+
+#menuOpcionesUsuario div{
+	background: #aaa;
+	border: 2 solid rgba(255,255,255,0.7);
+	height: 1.8em;
+	display: none;
+	padding-top: 0.7em;
+	vertical-align: middle;
+}
+
+#menuOpcionesUsuario div:hover{
+	background: #ddd;
+	cursor: pointer;
 }
 
 #registrarse{
